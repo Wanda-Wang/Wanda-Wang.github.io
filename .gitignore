@@ -1,0 +1,12 @@
+.DS_Store
+
+# Compiled site
+_site
+
+# Caches
+.jekyll-cache
+.sass-cache
+
+# Bundler
+.bundle/
+vendor/
