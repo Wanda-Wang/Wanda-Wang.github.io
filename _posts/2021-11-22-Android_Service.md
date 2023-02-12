@@ -3,7 +3,7 @@ title: Android Service
 date: 2021-11-22 14:10:00 +0800
 categories: [Blogging, Android]
 tags: [Android]
-img_path: assets/img/service/
+img_path: /assets/img/service/
 render_with_liquid: false
 ---
 
