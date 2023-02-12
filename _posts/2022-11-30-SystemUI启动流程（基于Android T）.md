@@ -1,8 +1,7 @@
 ---
 title: SystemUI启动流程（Android T）
-author: 王十一豆加
-date: 2022-12-19 14:10:00 +0800
-categories: [Blogging, Tutorial, Android]
+date: 2022-11-30 14:10:00 +0800
+categories: [Blogging, Android]
 tags: [SystemUI]
 render_with_liquid: false
 ---
@@ -1153,6 +1152,7 @@ doKeyguardLocked执行显示锁屏前的预处理操作：
 > showLocked
 {: .prompt-warning}
 1. mShowKeyguardWakeLock.acquire()：
+
 ```java
 private PowerManager.WakeLock mShowKeyguardWakeLock;
 
@@ -1162,8 +1162,10 @@ private void setupLocked() {
     ...
     }
 ```
+
 PowerManager.WakeLock也称作唤醒锁, 是一种保持 CPU 运转防止设备休眠的方式。在这里用到的是**`PARTIAL_WAKE_LOCK`, 无论屏幕的状态甚至是用户按了电源钮, CPU 都会继续工作。**PARTIAL_WAKE_LOCK保持CPU运转，而屏幕可以处于OFF状态。
 在showLocked中，保持CPU处于运转状态直到锁屏显示。
+
 2. 发送显示锁屏的消息，并放在队列最前面保证优先处理。
 
 
