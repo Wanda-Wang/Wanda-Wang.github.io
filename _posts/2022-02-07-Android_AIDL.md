@@ -3,6 +3,7 @@ title: AIDL源码分析及使用
 date: 2022-02-07 14:10:00 +0800
 categories: [Blogging, Android]
 tags: [Android]
+img_path: /assets/img/aidl/
 render_with_liquid: false
 ---
 
@@ -13,8 +14,7 @@ render_with_liquid: false
 
 Binder通信采用C/S架构，从组件视角来说，由**Client、Server、ServiceManager 以及 Binder 驱动**构成，其中 ServiceManager 用于管理系统中的各种服务。Binder通信的大概调用流程如下：
 
-![图1](https://zxzm0aor6j.feishu.cn/space/api/box/stream/download/asynccode/?code=YTNkMmUzZDViZTYwZGEzNDlmMDhiZjIyY2FhMDAxNTRfVVFHWXpndGI5WGwxN096ZUI2OTFuZE1CTlkwZ0EzZkFfVG9rZW46Ym94Y25XU0lNSFVFRXd1QzdpeTZSVEVEWnFnXzE2NzYyMjY1ODg6MTY3NjIzMDE4OF9WNA)
-
+![图1](aidl_1.PNG)
 
 
 - Client发起请求（Blocking），拿到服务端的Proxy（代理接口），调用Proxy中的方法；
@@ -68,7 +68,7 @@ AIDL并非真正的编程语言，只是定义两个进程间通信的接口而�
 
 在java同级目录下创建一个aidl的文件夹，并在该文件夹中新建一个aidl文件（new->AIDL->AIDL File），通常aidl接口文件以“I”起头命名：
 
-![img](https://zxzm0aor6j.feishu.cn/space/api/box/stream/download/asynccode/?code=MmUyOWY0NTJhZmY2YTUzNzc0Nzc1NGYyY2EyNGUwNmRfZ29mRkgwRU5XNkxLc1hWeVZRTXhFbW9sb3JjaVhlbXhfVG9rZW46Ym94Y25NNXlqQWNWY1BUeHBKU2xFcFZsNDNVXzE2NzYyMjY1ODg6MTY3NjIzMDE4OF9WNA)
+![图2](aidl_2.PNG)
 
 在AIDL中添加跨进程需要的方法：
 
@@ -83,13 +83,13 @@ interface IRemoteService {
 
 AIDL 文件定义好了。在Android Studio中点击Make build进行build，build结束后会在build/generated/aidl_source_output_dir/目录下生成与AIDL文件同名的java文件：
 
-![img](https://zxzm0aor6j.feishu.cn/space/api/box/stream/download/asynccode/?code=M2VhMDc0OGJlNjBlNjIzOTMwNTFiYWVhMjM0MGFjOWVfSU5MVHBUUk9zWmlNeFl0cVJ1YVVQa2xUTHRwcUk5cExfVG9rZW46Ym94Y25pcnp3eTVUQTVxd3phYXhxaWN1Yk9iXzE2NzYyMjY1ODg6MTY3NjIzMDE4OF9WNA)
+![图3](aidl_3.png)
 
 ### **AIDL源码分析**
 
 对比下图理解更有助于理解源码：
 
-![img](https://zxzm0aor6j.feishu.cn/space/api/box/stream/download/asynccode/?code=MDgzMWQwMWVkODMwMTY0NThiOTMzNjQ3YTNlODY3MmZfWkF3NXJWc0NYM1hsdDRxZ0E2NlozVzNmNDNROXlVY2VfVG9rZW46Ym94Y241blM5Smh0MzQ3MmpWSmw4RHRPOFRkXzE2NzYyMjY1ODg6MTY3NjIzMDE4OF9WNA)
+![图4](aidl_4.png)
 
 1.在文件开头就有注释，该文件是自动生成的，不要修改。所以如果要为跨进程通信添加新的方法，只需要在IRemoteService.aidl文件中添加再build即可。
 
@@ -333,7 +333,7 @@ public class RemoteService extends Service {
 
 （2）将服务端的aidl文件及目录一起拷贝到客户端同级目录：
 
-![img](https://zxzm0aor6j.feishu.cn/space/api/box/stream/download/asynccode/?code=ZmM0NmM1YTFkOTg0MmMyODI1NDlmNmY1NDljNDMyN2ZfZ3E0QmdwZ2FtUTRPRUZnN2R0NFVUU2VWcUpYeVZiSXpfVG9rZW46Ym94Y253TkNPY3ladzZMYmZjazgyeXFCWTJnXzE2NzYyMjY1ODg6MTY3NjIzMDE4OF9WNA)
+![图5](aidl_5.png)
 
 客户端需要有IRemoteService访问权限，因此如果Client与Service是跨进程的，则Client的同级目录也必须包含相同的aidl文件。
 
