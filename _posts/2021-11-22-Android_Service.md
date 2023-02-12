@@ -469,7 +469,7 @@ IntentService 是Service的子类，用于处理后台异步请求任务。由�
 所有的请求都在同一个工作线程上处理，一次处理一个请求，所以处理完所有的请求可能会花费很长的时间，但由于 IntentService 是另外创建子线程来工作，所以不会阻碍主线程，防止出现ANR。
 
 > **使用场景：**可以用来处理后台长时间的耗时操作，如：文件下载、音乐播放。IntentService已经在Android API 30弃用（对应Android 11）：在Android 8.0增加了[Background execution limits](https://developer.android.google.cn/about/versions/oreo/android-8.0-changes#back-all)，而IntentService受其影响，所以可以考虑使用[WorkManager](https://developer.android.com/reference/androidx/work/WorkManager.html)或[JobIntentService](https://developer.android.com/reference/android/support/v4/app/JobIntentService.html)。
-{: .prompt-error }
+{: .prompt-danger }
 
 ### （2）IntentService的使用
 
