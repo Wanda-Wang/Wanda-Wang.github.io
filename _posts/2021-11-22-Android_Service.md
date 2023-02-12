@@ -3,6 +3,7 @@ title: Android Service
 date: 2021-11-22 14:10:00 +0800
 categories: [Blogging, Android]
 tags: [Android]
+img_path: assets/img/service/
 render_with_liquid: false
 ---
 
@@ -24,7 +25,8 @@ Service的两种方式：
 
 备注：同一个Service可能有组件调用了startService()启动它，又有组件调用bindService()与它绑定。当同一个Service与其他组件同时存在这两种联系时，必须既要所有组件取消绑定也要stopService() 或 stopSelf()才会停止Service。
 
-![图1](https://zxzm0aor6j.feishu.cn/space/api/box/stream/download/asynccode/?code=ZDc2MzdkMmM2ZmM2OWZhM2FlZDA1NmE4M2QyMjgzOGRfcW5NSUJ3dzF2V1NyZGoyRmVoZGhyWVJQRUZFZUdXaEpfVG9rZW46Ym94Y24wSWpLQnFRNHd0V0lRVXZwYzhDdHdmXzE2NzYyMjQyOTI6MTY3NjIyNzg5Ml9WNA)
+![图1](service_1.png)
+_图1_
 
 ## 二、创建Service
 
@@ -189,13 +191,16 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 运行截图：
 
-![图2](https://zxzm0aor6j.feishu.cn/space/api/box/stream/download/asynccode/?code=YThlYzE0MWNjNjQzZWFiNDgzM2Q0MTFjN2FhODAxZjNfWXprYjNrbG1CbnVjMVFnbFVNbVpUaGJtR2tVTzB5aE5fVG9rZW46Ym94Y25lNzZLY0xITm9QMFY2TVhidkMyOTNkXzE2NzYyMjQyOTI6MTY3NjIyNzg5Ml9WNA)
+![图2](service_2.png)
+_图2_
 
-![图3](https://zxzm0aor6j.feishu.cn/space/api/box/stream/download/asynccode/?code=MTYxYzUzZDdlODIwZmVlZWM2YTgyYzY1OTY1Y2QzOWZfVDFpVld0Q1lLOVZjY0V1N1hVZHZzckJXTG91aXMwUVpfVG9rZW46Ym94Y242WVdYcDZUcnFNQ2FVZDNzSlFTTHVlXzE2NzYyMjQyOTI6MTY3NjIyNzg5Ml9WNA)
+![图3](service_3.png)
+_图3_
 
 从log中可以看出，通过调用startService()启动后Service的生命周期，以及在Service创建后多次调用startService()都会回调 onStartCommand()（如：图3）。并且Service在启动后，Service的生命周期不受其他组件的影响，即使启动它的Activity已经销毁了，Service也仍在运行（如：图4）。
 
-![图4](https://zxzm0aor6j.feishu.cn/space/api/box/stream/download/asynccode/?code=NDE2N2IwNTVlMDUyOWYxODM0ZjM2MjczNGFlZDA3MWNfWWdIYTRIN25ZbFVZeDY4TjczanhTQVpPQ3BKdjFTQzNfVG9rZW46Ym94Y25CeXRGTmsyYTNka3BFOHVCVEdaSDRjXzE2NzYyMjQyOTI6MTY3NjIyNzg5Ml9WNA)
+![图4](service_4.png)
+_图4_
 
 ## 四、bindService()
 
@@ -440,17 +445,19 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
 运行截图：
 
-![图5](https://zxzm0aor6j.feishu.cn/space/api/box/stream/download/asynccode/?code=MTg1ZjVmZTMyYzc3NTRhODY0ZjY4NTA2MzMyMjM4N2RfYVlkMGpVcGswRktVbEpYY3Q2RDYyazl4czlPbzFBNnFfVG9rZW46Ym94Y25wUzVjNGFNOTl0U3ROM2czaDgyS3BnXzE2NzYyMjQyOTI6MTY3NjIyNzg5Ml9WNA)
+![图5](service_5.png)
+_图5_
 
 - 再添加一个Acticity绑定该Service：
 
-![图6](https://zxzm0aor6j.feishu.cn/space/api/box/stream/download/asynccode/?code=MmJjN2ZmZGFhMzY2YmNkMmU2Y2Q0ZTgzYjZkN2EwMTVfVnNqS2pFMlJpRW5TRVhFeXluVVRvODJ0YVNaYW1RcjRfVG9rZW46Ym94Y255dG1NeUVjTHNvcVhLWHEyT3N2QnZoXzE2NzYyMjQyOTI6MTY3NjIyNzg5Ml9WNA)
+![图6](service_6.png)
+_图6_
 
 - 从图6日志中可以看出，当首次使用bindService()绑定Service时，系统会实例化一个Service实例，并调用其onCreate()和onBind()方法，此后如果再次使用bindService()绑定Service，系统不会创建新的Sevice实例，也不会再调用onBind()方法，只会直接把IBinder对象传递给其他后来增加的客户端。
 - 当所有与Service绑定的组件都调用了unbindService()方法后，系统会销毁Service：
 
-![图7](https://zxzm0aor6j.feishu.cn/space/api/box/stream/download/asynccode/?code=MDEzODFiYjdiZTZkZWRmOTE2YjdkYWI3MzNkZTZiMmNfTnIxQ3lXWlo5T1hMR3ZVaENtbFRCVXAzZ0Jqc1hvdGtfVG9rZW46Ym94Y25wZ0pCM2lOVWluWElPYndnMzRxS2diXzE2NzYyMjQyOTI6MTY3NjIyNzg5Ml9WNA)
-
+![图7](service_7.png)
+_图7_
 
 
 ## 五、IntentService
@@ -461,7 +468,8 @@ IntentService 是Service的子类，用于处理后台异步请求任务。由�
 
 所有的请求都在同一个工作线程上处理，一次处理一个请求，所以处理完所有的请求可能会花费很长的时间，但由于 IntentService 是另外创建子线程来工作，所以不会阻碍主线程，防止出现ANR。
 
-**使用场景：**可以用来处理后台长时间的耗时操作，如：文件下载、音乐播放。IntentService已经在Android API 30弃用（对应Android 11）：在Android 8.0增加了[Background execution limits](https://developer.android.google.cn/about/versions/oreo/android-8.0-changes#back-all)，而IntentService受其影响，所以可以考虑使用[WorkManager](https://developer.android.com/reference/androidx/work/WorkManager.html)或[JobIntentService](https://developer.android.com/reference/android/support/v4/app/JobIntentService.html)。
+> **使用场景：**可以用来处理后台长时间的耗时操作，如：文件下载、音乐播放。IntentService已经在Android API 30弃用（对应Android 11）：在Android 8.0增加了[Background execution limits](https://developer.android.google.cn/about/versions/oreo/android-8.0-changes#back-all)，而IntentService受其影响，所以可以考虑使用[WorkManager](https://developer.android.com/reference/androidx/work/WorkManager.html)或[JobIntentService](https://developer.android.com/reference/android/support/v4/app/JobIntentService.html)。
+{: .prompt-error }
 
 ### （2）IntentService的使用
 
@@ -563,9 +571,8 @@ case R.id.startIntentService:
     break;
 ```
 
-![img](https://zxzm0aor6j.feishu.cn/space/api/box/stream/download/asynccode/?code=MmNkNTVlOTEzOWVjYmZlM2FiYmNjZDcwNWViMzI5ODRfQmpNM0dkbVJCTWNWQ3Q2WUZiaTNsVW4zbHhEUll5SFlfVG9rZW46Ym94Y250VVN5ak85SGpQUDVwV0xqUm9ncGxmXzE2NzYyMjQyOTI6MTY3NjIyNzg5Ml9WNA)
-
-图8
+![图8](service_8.png)
+_图8_
 
 从图8日志中可以看出，IntentService在执行完任务后就会自行销毁执行onDestroy()。
 

@@ -16,7 +16,7 @@ Binder通信采用C/S架构，从组件视角来说，由**Client、Server、Ser
 
 ![图1](aidl_1.PNG)
 
-
+https://wanda-wang.github.io/assets/img/aidl/
 - Client发起请求（Blocking），拿到服务端的Proxy（代理接口），调用Proxy中的方法；
 - Proxy的方法会将Client传递的参数打包为Parcel对象，然后Proxy把该Parcel对象发送给内核中的Binder Driver；
 - Server读取Binder Driver中的请求数据，将发送给自己的请求数据解包，处理后返回结果；
