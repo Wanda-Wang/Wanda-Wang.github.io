@@ -1,6 +1,6 @@
 ---
 title: SystemUI启动流程（Android T）
-author: wanda
+author: 王十一豆加
 date: 2022-12-19 14:10:00 +0800
 categories: [Blogging, Tutorial, Android]
 tags: [SystemUI]
