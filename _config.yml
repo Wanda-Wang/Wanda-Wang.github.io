@@ -24,7 +24,7 @@ title: 王十一豆加的主页                          # the main title
 tagline: 王十一豆加的博客，以Android内容为主~   # it will display as the sub-title
 
 description: >-                        # used by seo meta and the atom feed
-  王十一豆加的博客，以Android内容为主~ 
+  王十一豆加的博客，以Android内容为主。分析与画图不易，请勿转载。
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: ''
@@ -42,8 +42,8 @@ social:
   email: wanda99@foxmail.com             # change to your email address
   links:
     # The first element serves as the copyright owner's link
-    - https://twitter.com/username      # change to your twitter homepage
-    - https://github.com/username       # change to your github homepage
+#    - https://twitter.com/username      # change to your twitter homepage
+#    - https://github.com/username       # change to your github homepage
     # Uncomment below to add more social links
     # - https://www.facebook.com/username
     # - https://www.linkedin.com/in/username
