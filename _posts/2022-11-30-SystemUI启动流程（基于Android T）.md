@@ -6,7 +6,6 @@ tags: [SystemUI]
 render_with_liquid: false
 ---
 
-# SystemUI启动流程（基于Android T）
 
 本文以锁屏为例，分析SystemUI的启动，也分析了android中application的创建（2.2.1部分详解）。
 锁屏开机大致分为两部分：第一部分是KeyguardViewMediator的启动；第二部分是从WindowManagerService开始，处理锁屏显示等流程。![1](https://wanda-wang.github.io/assets/img/article/two.jpg)

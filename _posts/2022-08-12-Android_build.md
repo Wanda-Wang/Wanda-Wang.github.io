@@ -1,7 +1,7 @@
 ---
 title: Android本地编译：以framework和systemui为例
 date: 2022-08-12 14:10:00 +0800
-categories: [Blogging, Android]
+categories: [Blogging, Android, Android编译]
 tags: [Android]
 img_path: /assets/img/build/
 render_with_liquid: false

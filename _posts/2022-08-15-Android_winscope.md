@@ -1,7 +1,7 @@
 ---
 title: Android闪屏问题分析及Winscope使用
 date: 2022-08-15 14:10:00 +0800
-categories: [Blogging, Android]
+categories: [Blogging, Android, 分析工具]
 tags: [Android]
 img_path: /assets/img/winscope/
 render_with_liquid: false

@@ -1,7 +1,7 @@
 ---
-title: Android Service
+title: Android Service 及 IntentService源码解析
 date: 2021-11-22 14:10:00 +0800
-categories: [Blogging, Android]
+categories: [Blogging, Android, 源码分析]
 tags: [Android]
 img_path: /assets/img/service/
 render_with_liquid: false
