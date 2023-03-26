@@ -2,7 +2,7 @@
 title: SystemUI启动流程（Android T）
 date: 2022-11-30 14:10:00 +0800
 categories: [Blogging, Android]
-tags: [SystemUI]
+tags: [SystemUI, 源码分析]
 render_with_liquid: false
 ---
 

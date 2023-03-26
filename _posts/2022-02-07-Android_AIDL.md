@@ -2,7 +2,7 @@
 title: AIDL源码分析及使用
 date: 2022-02-07 14:10:00 +0800
 categories: [Blogging, Android, 源码分析]
-tags: [Android]
+tags: [Android, 源码分析]
 img_path: /assets/img/aidl/
 render_with_liquid: false
 ---
